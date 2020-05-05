@@ -1,0 +1,79 @@
+<div class="row">
+     
+     
+  <!-- 
+<div>
+  <input type="text" [(ngModel)]="textSimple">
+  <p>{{textSimple}}</p>
+</div>-->
+
+  <div class="col-sm-6" *ngIf="disciplinaSelecionado">
+    <div class="row">
+      <div class="mr-auto">
+        <app-titulo [titulo]="'Cód.disciplina:' + disciplinaSelecionado.id"></app-titulo>
+      </div>
+        <div class="mt-1">
+          <button class="btn btn-sm btn-outline-danger" (click)="voltar()">
+            Fechar
+          </button>
+      </div>
+    </div>
+    
+    
+        <form [formGroup]="disciplinaForm" (submit)="disciplinaSubmit()">
+          <div class="form-group">
+            <label for="formGroupExampleInput">ID</label>
+            <input type="text" formControlName="id" class="form-control" >
+          </div>
+          <div class="form-group">
+            <label for="formGroupExampleInput2">Nome</label>
+            <input type="text" formControlName="nome" class="form-control" >
+          </div>
+          <div class="form-group">
+            <label for="formGroupExampleInput2">Tutor</label>
+            <input type="text" formControlName="tutor" class="form-control" >
+          </div>
+          <button class="btn btn-success" [disabled]="!disciplinaForm.valid">Enviar</button>
+        </form>
+</div>
+
+
+<div [ngClass]="{'col-sm-6': disciplinaSelecionado, 'col-sm-12': !disciplinaSelecionado}" >
+  <app-titulo [titulo]="titulo"></app-titulo>
+
+  <table class="table table-hover">
+    <thead class="thead-light">
+      <tr>
+        <th>Visualizar</th>
+        <th scope="col">ID</th>
+        <th scope="col">Nome</th>
+        <th scope="col">Tutor</th>
+        <th> <button (click)="openModal(template)" data-toggle="tooltip" data-placement="bottom" title="Lista Completa" class="btn btn-warning">Lista De Professores</button></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let disciplina of disciplinas"><!-- For para escrever o que há dentro do objeto-->
+        <td><button (click)="disciplinaSelected(disciplina)" data-toggle="tooltip" data-placement="bottom" title="Mostrar Detalhes"class="btn btn-sm btn-outline-warning">Detalhes</button></td>
+        <td scope="row">{{disciplina.id}}</td>
+        <td>{{disciplina.nome}}</td>
+        <td>{{disciplina.tutor}}</td>
+        <td>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+</div>
+
+
+<ng-template #template>
+<div class="modal-body">
+<app-professores></app-professores>
+</div>
+<div class="modal-footer">
+<button type="button" class="btn btn-sm btn-outline-danger pull-right" aria-label="Close" (click)="modalRef.hide()">
+  Fechar
+</button>
+</div>
+</ng-template>
+

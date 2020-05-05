@@ -1,0 +1,76 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+  <div class="container">
+
+
+    <a class="navbar-brand"  routerLink="dashboard">SmartSchool</a>
+  
+  <div class="btn-group" dropdown>
+
+            <button id="button-basic" dropdownToggle class="navbar-toggler mr-5 mt-2" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="dropdown-basic" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon" data-target="#navbarNavDropdown"></span>
+            </button>
+
+
+      <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu"role="menu" aria-labelledby="button-basic">
+            <li role="menuitem">
+              <a routerLink="dashboard" routerLinkActive="active" class="dropdown-item">Home</a>
+            </li>
+            <li role="menuitem">
+              <a routerLink="alunos" routerLinkActive="active" class="dropdown-item">Alunos</a>
+            </li>
+            <li class="divider dropdown-divider"></li>
+            <li role="menuitem">
+              <a routerLink="professores" routerLinkActive="active" class="dropdown-item">Professores</a>
+            </li>
+            <li class="divider dropdown-divider"></li>
+            <li role="menuitem">
+              <a routerLink="disciplinas" routerLinkActive="active" class="dropdown-item">Disciplinas</a>
+            </li>
+
+      </ul>
+
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a routerLink="alunos" routerLinkActive="active" class="nav-link" >Alunos <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="professores" routerLinkActive="active" class="nav-link">Professores</a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="disciplinas" routerLinkActive="active" class="nav-link">Disciplinas</a>
+      </li>
+    </ul>
+    <ul class="navbar-nav" dropdown>
+      <li class="nav-item dropdown">
+        <a id="button-basic" dropdownToggle class="nav-link dropdown-toggle" style="cursor:pointer" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Dropdown link
+        </a>
+        <div id="dropdown-basic" *dropdownMenu  class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" routerLink="perfil" href="#">Perfil</a>
+          <a class="dropdown-item" href="#">Sair</a>
+        </div>
+      </li>
+    </ul>
+  </div>
+  </div>
+</nav>
+
+<a routerLink="professores"></a>
+<a routerLink="Alunos"></a>
+<a routerLink="perfil"></a>
+<a routerLink="dashboard"></a>
+<a routerLink="Disciplinas"></a>

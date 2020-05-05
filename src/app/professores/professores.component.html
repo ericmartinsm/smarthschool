@@ -1,0 +1,75 @@
+
+<div class="row">
+  
+  
+  <div class="col-sm-12" *ngIf="professorSelecionado">
+    <div class="row">
+      <div class="mr-auto">
+        <app-titulo [titulo]="'Professor:' + professorSelecionado.id"></app-titulo>
+      </div>
+      <div class="mt-2">
+        <button class="btn btn-sm btn-outline-primary mr-3" (click)="voltar()">
+          Voltar
+        </button>
+      </div>
+    </div>
+    
+    
+    <form [formGroup]="professorForm" (submit)="professorSubmit()">
+      <div class="form-group">
+        <label for="formGroupExampleInput">Nome</label>
+        <input type="text" formControlName="nome" class="form-control" >
+      </div>
+      <div class="form-group">
+        <label for="formGroupExampleInput2">Disciplina</label>
+        <input type="text" formControlName="disciplina" class="form-control" >
+      </div>
+      <button class="btn btn-success" [disabled]="!professorForm.valid">Enviar</button>
+    </form>
+  </div>
+  
+  
+  
+  <div  class="col-sm-12" *ngIf="!professorSelecionado"> <!--[ngClass]="{'col-sm-6': professorSelecionado, 'col-sm-12': !professorSelecionado}">-->
+    <app-titulo [titulo]="titulo"></app-titulo>
+    
+    
+    <table class="table table-hover">
+      <thead class="thead-light">
+        <tr>
+          <th>Visualizar</th>
+          <th scope="col">ID</th>
+          <th scope="col">Nome</th>
+          <th scope="col">Disciplina</th>
+          <th scope="col">Opções</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr  *ngFor="let professor of professores">
+          <td><button  (click)="professorSelected(professor)" data-toggle="tooltip" data-placement="bottom" title="Mostrar Detalhes" class="btn btn-sm btn-outline-warning">Visualizar</button></td>
+          <td scope="row">{{professor.id}}</td>
+          <td>{{professor.nome}}</td>
+          <td>{{professor.disciplina}}</td>
+          <td>
+            <div class="btn-group">
+              <button (click)="openModal(template)" data-toggle="tooltip" data-placement="bottom" title="Alunos Options" class="btn btn-sm btn-primary">Alunos</button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+
+<ng-template #template>
+  <div class="modal-body">
+    <p>Alunos Options</p>
+  </div>
+  <div class="moral-footer">
+    <button type="button" class="btn btn-sm btn-outline-danger pull-right" aria-label="Close" (click)="modalRef.hide()">
+      Voltar
+    </button>
+  </div>  
+</ng-template>
